@@ -1,0 +1,18 @@
+#yamlPreprocessor=on
+project:
+  name: saas-starter
+  tags:
+    - nermalcat69
+services:
+  - hostname: app
+    type: nodejs@latest
+    buildFromGit: https://github.com/nermalcat69/saas-starter-zerops
+    enableSubdomainAccess: true
+    priority: 2
+    envSecrets:
+      AUTH_SECRET: <@generateRandomString(<64>)>
+    
+  - hostname: db
+    type: postgresql@16
+    mode: HA
+    priority: 1

@@ -1,1 +1,26 @@
 
+zerops:
+  - setup: app
+    build:
+      base: nodejs@20
+      envVariables:
+        POSTGRES_URL: ${db_connectionString}/${db_dbName}
+        BASE_URL: ${zeropsSubdomain}
+      buildCommands:
+        - pnpm i
+        - pnpm run build
+      deployFiles: /
+      cache:
+        - node_modules
+        - pnpm-lock.json
+    run:
+      base: nodejs@20
+      envVariables:
+        POSTGRES_URL: ${db_connectionString}/${db_dbName}
+        BASE_URL: ${zeropsSubdomain}
+      ports:
+        - port: 3000
+          httpSupport: true
+      prepareCommands:
+        - pnpm run db:generate
+      start: pnpm start
