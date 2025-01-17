@@ -11,6 +11,8 @@ services:
     priority: 2
     envSecrets:
       AUTH_SECRET: <@generateRandomString(<64>)>
+      # STRIPE_SECRET_KEY: sk_test_*** ~~~ You need to set this or build will fail
+      # STRIPE_WEBHOOK_SECRET: whsec_*** ~~~ You need to set this or build will fail
     
   - hostname: db
     type: postgresql@16
