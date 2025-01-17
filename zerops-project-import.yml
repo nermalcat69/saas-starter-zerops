@@ -5,7 +5,7 @@ project:
     - nermalcat69
 services:
   - hostname: app
-    type: nodejs@latest
+    type: nodejs@20
     buildFromGit: https://github.com/nermalcat69/saas-starter-zerops
     enableSubdomainAccess: true
     priority: 2
