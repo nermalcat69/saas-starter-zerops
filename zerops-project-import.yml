@@ -8,7 +8,7 @@ services:
     type: nodejs@20
     buildFromGit: https://github.com/nermalcat69/saas-starter-zerops
     enableSubdomainAccess: true
-    priority: 2
+    priority: 1
     envSecrets:
       AUTH_SECRET: <@generateRandomString(<64>)>
       # STRIPE_SECRET_KEY: sk_test_*** ~~~ You need to set this or build will fail
@@ -16,5 +16,5 @@ services:
     
   - hostname: db
     type: postgresql@16
-    mode: HA
-    priority: 1
+    mode: NON_HA
+    priority: 2
